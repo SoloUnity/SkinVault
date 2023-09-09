@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "keychain.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/GroupeMINASTE/Keychain.swift",
+      "state" : {
+        "revision" : "d4b6bd007fd8432a59d341faa22ec0cd738d2d9d",
+        "version" : "1.0.5"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -1,0 +1,246 @@
+/*
+Localizable.strings
+ValorantStoreChecker
+
+Created by Gordon on 2022-08-07.
+Translation help from Silveswhy
+*/
+
+
+//----------------------------------
+// MARK: Onboarding
+// LoginView
+"SignIn" = "Se connecter";
+"PrivacyDisclaimer" = "Vous n'avez pas de compte?Cliquez ici pour [inscrire](https://auth.riotgames.com/login).En cliquant sur la connexion, vous acceptez nos termes et conditions et notre [politique de confidentialité](https://www.craft.do/s/fqxdg6asyp8wak)";
+
+// LoginViews -> LoginInfoView
+"Login" = "Connectez-vous à votre compte Riot";
+"InvalidCredentials" = "Informations d'identification non valides";
+
+// LoginViews -> LoginBoxView
+"Username" = "Identifiant";
+"Password" = "Mot de passe";
+
+// LoginViews -> RegionSelectorView
+"SelectRegion" = "Sélectionner la région";
+"Americas" = "Les Amériques";
+"Europe" = "Europe";
+"AsiaPacific" = "Asie-Pacifique";
+"SouthKorea" = "Corée du Sud";
+
+// LoginViews -> TermsView
+"TermsAndConditions" = "Termes et conditions";
+"MITLicense" = "Licence MIT
+Copyright (c) 2022 Gordon Ng
+
+L'autorisation est accordée par la présente, gratuitement, à toute personne obtenant une copie de ce logiciel et des fichiers de documentation associés (le logiciel), de traiter le logiciel sans restriction, y compris, mais sans s'y limiter, les droits d'utilisation, de copie, de modification, de fusion, de publication, de distribution, de sous-licence et/ou de vente de copies du logiciel, et d'autoriser les personnes à qui le logiciel est fourni à le faire, sous réserve des conditions suivantes : L'avis de copyright ci-dessus et cet avis d'autorisation doivent être inclus dans toutes les copies ou parties substantielles du logiciel.
+
+LE LOGICIEL EST FOURNI TEL QUEL, SANS GARANTIE D'AUCUNE SORTE, EXPRESSE OU IMPLICITE, Y COMPRIS, MAIS SANS S'Y LIMITER, LES GARANTIES DE QUALITÉ MARCHANDE, D'ADÉQUATION À UN USAGE PARTICULIER ET DE NON-VIOLATION. EN AUCUN CAS, LES AUTEURS OU LES DÉTENTEURS DE DROITS D'AUTEUR NE POURRONT ÊTRE TENUS RESPONSABLES DE TOUTE RÉCLAMATION, DE TOUT DOMMAGE OU DE TOUTE AUTRE RESPONSABILITÉ, QUE CE SOIT DANS LE CADRE D'UNE ACTION CONTRACTUELLE, DÉLICTUELLE OU AUTRE, DÉCOULANT DE OU LIÉE AU LOGICIEL OU À SON UTILISATION OU À D'AUTRES TRANSACTIONS.";
+"Copyright" = "Copyright";
+"CopyrightNotice" = "VSC (Valorant Store Checker) n'est pas associé, connecté ou approuvé par Valorant ou Riot Games. En outre, Riot Games et Valorant sont des marques déposées par Riot Games Inc.";
+
+//----------------------------------
+// MultifactorView
+"EnterTheCode" = "Entrez le code envoyé à";
+"InvalidCode" = "Code invalide";
+"TwoFactorAuthentication" = "Authentification à deux facteurs";
+
+// DownloadView
+"DownloadAssets" = "Télécharger des images";
+"Stuck" = "Bloqué ? Cliquez ici pour réessayer.";
+
+//----------------------------------
+// MARK: Home
+// NightMarketView
+"NightMarket" = "Marché de nuit";
+
+//----------------------------------
+// NavTabBar -> TabBar
+"Store" = "Boutique";
+"Bundle" = "Pack";
+"SkinIndex" = "Index des skins";
+"Settings" = "Réglages";
+
+// NavTabBar -> NavigationSearchBar
+"Cancel" = "Annuler";
+
+//----------------------------------
+// SkinCardDetailView -> PriceView
+"Cost" = "Coût";
+"ExclusiveSkinMessage" = "Ce skin s'agit soit d'une exclusivité Battlepass, soit d'une exclusivité d'agent, ou d'un skin en édition limitée.";
+
+// SkincardDetailView -> VideoPickerView
+"Tier" = "Niveau";
+"Default" = "Défaut";
+"Default1" = "1. Défaut";
+"Unknown" = "Inconnu";
+
+//----------------------------------
+// ShopTopBarView
+"Reloading" = "Rechargement";
+"Reload" = "Recharger";
+"UpdateAvailable" = "Mise à jour disponible";
+
+//----------------------------------
+// BundleView
+"EmptyBundle" = "Rafraîchir pour voir le pack";
+
+//----------------------------------
+// SkinListView
+"NoOwned" = "Veuillez recharger la boutique, ou acheter des skins :)";
+"EmptySearch" = "Rien ne correspond à votre recherche";
+"Statistics" = "Statistiques";
+"TotalCollectionCost" = "Coût total du collection";
+"TotalSkinCount" = "Nombre total de peau";
+
+// SearchBar
+"Search" = "Recherche";
+
+// FilterView
+"All" = "Tout";
+"Owned" = "Possédé";
+"Knife" = "Couteau";
+"Sidearm" = "Pistolet";
+"SMGs" = "Mitraillette";
+"Shotguns" = "Fusil à pompe";
+"Rifles" = "Fusil";
+"Sniper" = "Fusil de sniper";
+"Heavy" = "Mitrailleuse lourde";
+"PriceSort" = "Trier par prix";
+"LowestFirst" = "Le moins cher d'abord";
+"HighestFirst" = "Le plus cher d'abord";
+
+//----------------------------------
+// SettingsView
+"HelpDev" = "Aidez le Dev!";
+"AutomaticReload" = "Rechargement automatique";
+"Notify" = "Notification de réinitialisation du boutique";
+"Allow" = "Autoriser";
+"Appearance" = "Apparence";
+"Language" = "Langue";
+"ManageMedia" = "Gérer les médias";
+"Support" = "Aide";
+"Community" = "Communauté";
+"Share" = "Partager l'application";
+"Acknowledgements" = "Remerciements";
+"About" = "À propos";
+
+//----------------------------------
+// AccountViews -> AccountView
+"RememberPasswordInfo" = "Votre mot de passe est sécurisé par Keychain. Si vous vous déconnectez ou si vous désactivez le commutateur, le mot de passe sera automatiquement oublié. L'activation de cette fonction permet de contourner les limitations de tempds de l'API et de se connecter automatiquement au nom de l'utilisateur.";
+"SignOut" = "Se déconnecter";
+"Account" = "Compte";
+"DeleteAccount" = "Supprimer le compte";
+
+// AccountViews -> RememberPasswordView
+"RememberPassword" = "Retenir le mot de passe";
+
+// AccountViews -> RegionView
+"Region" = "Région";
+
+// AccountViews -> AccountSwitcherView
+"SwitchAccounts" = "Changer de compte";
+
+//----------------------------------
+// HelpViews -> HelpView
+"HelpMessage" = "Salut ! Je suis simplement un étudiant universitaire qui est privé de sommeil. J'essaie seulement de rendre la vie un petit peu meilleure pour tout le monde 😄. S'il vous plaît pensez à de m'aider à travers n'importe quelle méthode ci-dessous !";
+"Review" = "Laisser un avis";
+"Star" = "Donnez une étoile au projet";
+"HelpTranslate" = "Aider avec la traduction";
+
+// HelpViews -> TipView
+"ShowAppreciation" = "Montrez votre appréciation";
+"Sponsor" = "Effectuer une donation";
+
+//----------------------------------
+// AppearanceView
+"CheckUpdates" = "Vérifier les mises à jour";
+"ColourScheme" = "Thème de l'application";
+"Auto" = "Auto";
+"Light" = "Light";
+"Dark" = "Dark";
+"Background" = "Arrière-plan";
+"AppIcon" = "Icône de l'application";
+"DefaultDark" = "Default Dark";
+"3DDark" = "3D Dark";
+"Default Light" = "Default Light";
+"3DLight" = "3D Light";
+
+// MediaManagementView
+"AutoplayVideos" = "Vidéos en autoplay";
+"Both" = "Auto";
+"DownloadNewAssets" = "Télécharger les nouveaux images";
+"WifiOnly" = "Wifi seulement";
+"CellularOnly" = "Cellulaire seulement";
+"Never" = "Jamais";
+"ClearAssets" = "Supprimer les images";
+"Clear" = "Supprimer";
+
+// SupportView
+"Create" = "Créer un ticket d'assistance";
+"FAQ" = "FAQ";
+"SourceCode" = "Code Source";
+"FAQText" = "Pourquoi l'application a-t-elle besoin de mes informations de connexion ?
+                        
+Si la plupart de vos statistiques sont librement accessibles sans votre mot de passe, votre boutique est une exception notable car elle est considérée comme une information sensible. Pour que l'application puisse accéder à votre boutique, elle a besoin de vos informations de connexion, qu'elle obtient par le biais de cette [API open source](https://github.com/HeyM1ke/ValorantClientAPI).
+                        
+Quelles sont les mesures mises en place pour me protéger ?
+
+Outre le fait que votre mot de passe n'est jamais stocké, les informations sensibles, y compris votre région, sont protégées par le trousseau de clés. L'application est également open source, ce qui permet à tout le monde d'accéder au code à tout moment. Votre vie privée est une priorité, et j'ai fait tout ce qui était en mon pouvoir pour la garantir. Pour le charabia juridique, voir [ici](https://www.craft.do/s/fQxdg6aSyp8WAk).
+
+Quels sont les éléments téléchargés ?
+
+Les ressources téléchargées sont des images qui vous permettent d'utiliser la fonction Skin index de l'application à tout moment, même hors connexion.
+
+A quoi sert le mot de passe mémorisé ?
+
+La façon actuelle dont le bouton de rechargement utilise des cookies à la place de votre nom d'utilisateur et de votre mot de passe, ce qui permet à l'application de ne pas stocker votre mot de passe du tout. Toutefois, ces cookies expirent après un certain temps, ce qui oblige l'utilisateur à se reconnecter. Afin de rationaliser ce processus, la fonction Se souvenir du mot de passe permet à l'utilisateur d'enregistrer son mot de passe et de se connecter automatiquement en coulisses. Si l'utilisateur ne souhaite pas enregistrer son mot de passe, il peut simplement se déconnecter et se reconnecter pour créer de nouveaux cookies.";
+
+// CommunityView
+"WebAndDisc" = "Site internet et Discord Bot";
+"DiscordServer" = "Serveur Discord";
+
+
+// AcknowledgementsView
+"ThankJulian" = "Merci de votre aide et d'avoir répondu à mes nombreuses questions.!";
+"ThankLunac" = "Merci pour votre soutien continu!";
+"ThankTranslator" = "Merci pour votre aide à traduire l'application!";
+
+// AboutView
+"Version" = "Version";
+"Privacy" = "Politique de confidentialité";
+"WhatsNew" = "Nouveautés";
+"MadeIn" = "Fabriqué au 🇨🇦";
+
+//----------------------------------
+// MARK: Miscallaneous
+// AlertView
+"NetworkError" = "Pas d'internet";
+"InfoPrice" = "Le prix de ce skin n'est malheureusement pas dans notre base de données.";
+"ErrorTitle" = "Erreur";
+"OK" = "OK";
+"CopyError" = "Copier l'erreur";
+"ErrorMessage1" = "Vos cookies personnels ont expiré. Il s'agit d'une limitation de l'API sur laquelle je n'ai aucun contrôle. Il y a 2 options pour résoudre ce problème :
+1) Déconnectez-vous et reconnectez-vous.
+2) Activez la mémorisation du mot de passe dans Paramètres > Compte.";
+"ErrorMessage2" = "Mauvais mot de passe défini dans Réglages.";
+"ErrorMessage3" = "Votre achat n'a pas pu être vérifié par l'App Store.";
+"ErrorMessage4" = "Aucun pack n'est en vente, veuillez réessayer plus tard.";
+"ErrorMessage5" = "Retenir le mot de passe doit être mis en place pour un rechargement automatique du shop.";
+"InvalidLogin" = "Connexion invalide";
+"Reset" = "Réinitialiser";
+"ResetInfo" = "De temps en temps, en raison de certains bugs, des erreurs peuvent survenir. Ce bouton vous permet de réinitialiser complètement l'application en cas de ces erreurs.";
+"ReviewTitle" = "Vous aimez VSC ?";
+"OpenGitHub" = "Laisser une étoile GitHub";
+"MaybeLater" = "Peut-être plus tard";
+"NeverShowAgain" = "Ne jamais plus afficher";
+"ReviewPrompt" = "Veuillez laisser un avis ou une étoile sur GitHub !";
+
+// UpdatesView
+"UpdateInstructions1" = "S'il n'y a pas d'option de mise à jour, veuillez:";
+"UpdateInstructions2" = "Accédez à l'onglet Accueil (Aujourd'hui)";
+"UpdateInstructions3" = "Cliquez sur votre profil en haut à droite";
+"UpdateInstructions4" = "Balayez vers le bas pour recharger";
+"UpdateInstructions5" = "Faites défiler vers le bas pour voir les mises à jour disponibles";
+"UpdateTitle" = "Mettre à jour l'application";
+

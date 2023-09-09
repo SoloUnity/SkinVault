@@ -1,0 +1,247 @@
+/*
+Localizable.strings
+ValorantStoreChecker
+
+Created by Gordon on 2022-08-07.
+Translation help from xMasa
+*/
+
+
+//----------------------------------
+// MARK: Onboarding
+// LoginView
+"SignIn" = "サインイン";
+"PrivacyDisclaimer" = "アカウントを持っていませんか？ここをクリックして[サインアップ](https://auth.riotgames.com/login) 。サインインをクリックすると、契約条件と[プライバシーポリシー](https://www.craft.do/s/fqxdg6asyp8wak) に同意します。";
+
+
+
+// LoginViews -> LoginInfoView
+"Login" = "Riotアカウントにログインする";
+"InvalidCredentials" = "無効な認証情報";
+
+
+// LoginViews -> LoginBoxView
+"Username" = "ユーザー名";
+"Password" = "パスワード";
+
+// LoginViews -> RegionSelectorViewa
+"SelectRegion" = "地域を選択";
+"Americas" = "北アメリカ";
+"Europe" = "ヨーロッパ";
+"AsiaPacific" = "アジア太平洋";
+"SouthKorea" = "韓国";
+
+// LoginViews -> TermsView
+"TermsAndConditions" = "利用規約";
+"MITLicense" = "MITライセンス
+Copyright (c) 2022 Gordon Ng
+
+本ソフトウェアおよび関連文書ファイル（以下「本ソフトウェア」）の複製を取得する者に対し、本ソフトウェアの使用、複製、変更、結合、出版、配布、サブライセンス、および/または複製物の販売に関する権利を含むがこれに限定されない、無制限の取引を行い、本ソフトウェアを提供される者にこれを認める許可を、以下の条件で、無償で付与するものである。このような場合、以下の条件に従って、本ソフトウェアを提供する人にその使用を許可するものとします。
+
+本ソフトウェアは、商品性、特定目的への適合性および非侵害の保証を含むがこれに限定されない、明示または黙示のいかなる種類の保証もなく、現状のまま提供されるものである。本ソフトウェアの著作権者または著作権所有者は、本ソフトウェアまたは本ソフトウェアの使用またはその他の取引から生じる、契約、不法行為またはその他の行為のいずれであっても、いかなる請求、損害またはその他の責任に対しても責任を負いません。";
+"Copyright" = "著作権";
+"CopyrightNotice" = "VSC (Store Checker for Valorant) は、Valorant社やRiot Games社とは関連もつながりもなく、推奨するものでもありません。また、Riot GamesおよびValorantはRiot Games Inc.の下で登録された商標です";
+
+//----------------------------------
+// MultifactorView
+"EnterTheCode" = "送信されたコードを入力してください";
+"InvalidCode" = "無効なコード";
+"TwoFactorAuthentication" = "2段階認証";
+
+// DownloadView
+"DownloadAssets" = "アセットをダウンロード";
+"Stuck" = "フリーズしましたか？ここをクリックして再試行してください。";
+
+//----------------------------------
+// MARK: Home
+// NightMarketView
+"NightMarket" = "ナイトマーケット";
+
+//----------------------------------
+// NavTabBar -> TabBar
+"Store" = "ストア";
+"Bundle" = "バンドル";
+"SkinIndex" = "スキンインデックス";
+"Settings" = "設定";
+
+// NavTabBar -> NavigationSearchBar
+"Cancel" = "キャンセル";
+
+//----------------------------------
+// SkinCardDetailView -> PriceView
+"Cost" = "コスト";
+"ExclusiveSkinMessage" = "これはバトルパス限定、エージェント契約限定、期間限定版のいずれかのスキンです。";
+// SkincardDetailView -> VideoPickerView
+
+//----------------------------------
+// ShopTopBarView
+
+"Reloading" = "リロード中";
+"Reload" = "リロード";
+"UpdateAvailable" = "アップデートがあります";
+
+//----------------------------------
+// BundleView
+"EmptyBundle" = "バンドルを更新する";
+
+//----------------------------------
+// SkinListView
+"EmptySearch" = "検索条件に一致するものがありません";
+"NoOwned" = "ストアを再読み込みするか、スキンを購入してください :)";
+"Statistics" = "統計学";
+"TotalCollectionCost" = "総収集コスト";
+"TotalSkinCount" = "合計皮膚数";
+
+// SearchBar
+"Search" = "検索";
+
+// FilterView
+"All" = "すべて";
+"Owned" = "所有済み";
+"Knife" = "ナイフ";
+"Sidearm" = "ハンドガン";
+"SMGs" = "サブマシンガン";
+"Shotguns" = "ショットガン";
+"Rifles" = "ライフル";
+"Sniper" = "スナイパー";
+"Heavy" = "マシンガン";
+"PriceSort" = "価格で並べ替えます";
+"LowestFirst" = "最低の最初の";
+"HighestFirst" = "最高です";
+
+//----------------------------------
+// SettingsView
+"HelpDev" = "デベロッパー助ける";
+"AutomaticReload" = "自動更新";
+"Notify" = "ストアリセット通知";
+"Allow" = "許可する";
+"Appearance" = "外観";
+"Language" = "言語";
+"ManageMedia" = "メディアを管理する";
+"Support" = "サポート";
+"Community" = "コミュニティ";
+"Share" = "アプリを共有する";
+"Acknowledgements" = "謝辞";
+"About" = "バージョン情報";
+
+//----------------------------------
+// AccountViews -> AccountView
+"RememberPasswordInfo" = "パスワードはKeychainによって保護されています。サインアウト、またはトグルスイッチを無効にすると、パスワードは自動的に忘れられます。この機能を有効にすると、APIの時間制限を回避し、ユーザーの代わりに自動サインインが可能になります。";
+"SignOut" = "サインアウト";
+"Account" = "アカウント";
+"DeleteAccount" = "アカウントを削除する";
+
+// AccountViews -> RememberPasswordView
+"RememberPassword" = "パスワードの記憶";
+
+// AccountViews -> RegionView
+"Region" = "地域";
+
+// AccountViews -> AccountSwitcherView
+"SwitchAccounts" = "アカウント切り替え";
+
+//----------------------------------
+// HelpViews -> HelpView
+
+"HelpMessage" = "こんにちは！私は人生を少しでも良くしようと思っている寝不足の大学生です😄。以下の方法で私を助けることを検討してください！";
+"Review" = "レビューする";
+"Star" = "プロジェクトに星をつける";
+"HelpTranslate" = "翻訳のお手伝い";
+
+// HelpViews -> TipView
+"ShowAppreciation" = "感謝の気持ちを伝える";
+"Sponsor" = "寄付";
+
+//----------------------------------
+// AppearanceView
+"CheckUpdates" = "アップデートを確認する";
+"ColourScheme" = "カラースキーム";
+"Auto" = "オート";
+"Light" = "光";
+"Dark" = "ダーク";
+"Background" = "背景";
+"AppIcon" = "アプリアイコン";
+"DefaultDark" = "Default Dark";
+"3DDark" = "3D Dark";
+"Default Light" = "Default Light";
+"3DLight" = "3D Light";
+
+// MediaManagementView
+"AutoplayVideos" = "自動ビデオ再生";
+"Both" = "両方";
+"DownloadNewAssets" = "新スキンのダウンロード";
+"WifiOnly" = "Wifiのみ";
+"CellularOnly" = "携帯電話のみ";
+"Never" = "決して";
+"ClearAssets" = "ダウンロードしたスキンの削除";
+"Clear" = "削除";
+
+// SupportView
+"Create" = "サポートチケットの作成";
+"FAQ" = "よくある質問";
+"SourceCode" = "ソースコード";
+"FAQText" = "どうしてこのアプリは私のログイン情報を必要とするのですか？
+                        
+あなたの統計情報の多くは、パスワードなしで自由にアクセスできますが、あなたのストアは機密情報とみなされるため、例外です。アプリがあなたのストアにアクセスするためには、この[オープンソースAPI](https://github.com/HeyM1ke/ValorantClientAPI)を通してあなたのストアを取得する、あなたのログイン情報が必要です。
+                        
+私を保護するためにどのような対策がありますか？
+
+パスワードを保存しないことに加え、地域などの機密情報はKeychainで保護されています。また、このアプリはオープンソースであり、誰でもいつでもコードにアクセスすることができます。あなたのプライバシーは最優先事項であり、私はそれを保証するために全力を尽くしています。法律的なもろもろについては、[こちら](https://www.craft.do/s/fQxdg6aSyp8WAk)をご覧ください。
+
+どのようなアセットがダウンロードされるのですか？
+
+ダウンロードされるアセットは、オフラインの状態でもアプリのスキンインデックス機能を常時使用できるようにするための画像です。
+
+パスワードを記憶させるとはどういうことですか？
+
+現在、リロードボタンには、ユーザー名とパスワードの代わりにクッキーが必要で、アプリがパスワードを全く保存しないようにすることができます。しかし、このクッキーは一定期間が過ぎると失効してしまうため、ユーザーは再度サインインする必要があります。このプロセスを合理化するために、パスワードを記憶することで、ユーザーは自分のパスワードを保存し、舞台裏で自動的にサインインできるようになります。パスワードを保存したくない場合は、サインアウトして再度サインインすれば、新しいクッキーを作成することができます。";
+
+// CommunityView
+"WebAndDisc" = "ウェブサイトとDiscord Bot";
+"DiscordServer" = "Discordサーバー";
+
+// AcknowledgementsView
+"ThankJulian" = "たくさんの質問に答えてくれてありがとうございます！"; // juliand665
+"ThankLunac" = "いつも応援ありがとうございます！"; // Lunac
+"ThankTranslator" = "アプリを翻訳してくれてありがとう！";
+
+// AboutView
+"Version" = "バージョン";
+"Privacy" = "プライバシーポリシー";
+"WhatsNew" = "新着情報";
+"MadeIn" = "🇨🇦製";
+
+//----------------------------------
+// MARK: Miscallaneous
+// AlertView
+"NetworkError" = "ネットワークなし";
+"InfoPrice" = "このスキンの価格は、残念ながら私たちのデータベースにはありません。";
+"ErrorTitle" = "エラー";
+"OK" = "OK";
+"CopyError" = "コピーエラー";
+"ErrorMessage1" = "個人用Cookieの有効期限が切れています。これはAPIの制限で、私にはどうすることもできません。この問題を解決するには2つの方法があります。
+1) 一度ログアウトしてからサインインしてください。
+2) 設定 > アカウントでパスワードの保存をオンにする。";
+"ErrorMessage2" = "設定で設定されたパスワードが間違っている";
+"ErrorMessage3" = "お客様の購入履歴はApp Storeで確認することができませんでした。";
+"ErrorMessage4" = "販売中のバンドルはありません。後でもう一度試してください。";
+"ErrorMessage5" = "私のパスワード機能は、自動ストアリロードのためにオンにする必要があることを忘れないでください。";
+"InformationTitle" = "なぜログインするのですか？";
+"Information" = "あなたの統計の多くはパスワードなしで自由にアクセスできますが、あなたのストアは機密情報とみなされるため例外となります。アプリがあなたのストアにアクセスするためには、オープンソースのAPIを通じてあなたのストアを取得するためにあなたのログイン情報が必要です。追加情報、ソースコード、およびFAQは、以下のリンクに記載されています。";
+"InvalidLogin" = "無効なログイン";
+"Reset" = "リセット";
+"ResetInfo" = "まれにバグによりエラーが発生することがあります。このボタンにより、エラーが発生した場合、アプリを完全にリセットすることができます。";
+"ReviewTitle" = "VSC を楽しんでいますか?";
+"OpenGitHub" = "GitHub スターを残す";
+"MaybeLater" = "また後で";
+"NeverShowAgain" = "二度と表示しない";
+"ReviewPrompt" = "GitHub にレビューまたは星を残してください!";
+
+// UpdatesView
+"UpdateButton" = "利用可能なアップデート";
+"UpdateInstructions1" = "更新オプションがない場合は、次の手順を実行してください:";
+"UpdateInstructions2" = "ホーム (今日) タブに移動します";
+"UpdateInstructions3" = "右上のプロフィールをクリック";
+"UpdateInstructions4" = "下にスワイプしてリロード";
+"UpdateInstructions5" = "下にスクロールして利用可能なアップデートを表示します";
+"UpdateTitle" = "アプリの更新";

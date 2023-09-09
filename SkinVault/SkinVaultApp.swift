@@ -11,7 +11,8 @@ import SwiftUI
 struct SkinVaultApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashScreenView()
         }
+        .modelContainer(for: [Skin.self, Levels.self, Chromas.self])
     }
 }
