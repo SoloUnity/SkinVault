@@ -8,21 +8,21 @@
 import Foundation
 import UIKit
 import SwiftData
+import SwiftUI
 
 @Model
-class Skin: Identifiable, Codable, ObservableObject{
+final class Skin: Identifiable, Codable, ObservableObject{
     
-    var id : UUID
-    var displayName : String
-    var themeUuid : String?
-    var contentTierUuid : String?
-    var displayIcon : String?
-    @Relationship(deleteRule: .cascade)
-    var chromas : [Chromas]?
-    @Relationship(deleteRule: .cascade)
-    var levels : [Levels]?
-    var assetPath : String?
-    var discountedCost : String?
+    @Attribute(.unique)
+    var id: UUID
+    var displayName: String?
+    var themeUuid: String?
+    var contentTierUuid: String?
+    var displayIcon: String?
+    var chromas: [Chromas]?
+    var levels: [Levels]?
+    var assetPath: String?
+    var discountedCost: String?
     
     enum CodingKeys:String, CodingKey{
         case id = "uuid"
@@ -38,7 +38,7 @@ class Skin: Identifiable, Codable, ObservableObject{
     }
     
     init(id: UUID, 
-         displayName: String,
+         displayName: String?,
          themeUuid: String?,
          contentTierUuid: String?,
          displayIcon:String?,
@@ -61,7 +61,7 @@ class Skin: Identifiable, Codable, ObservableObject{
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         self.id = try container.decode(UUID.self, forKey: .id)
-        self.displayName = try container.decode(String.self, forKey: .displayName)
+        self.displayName = try container.decodeIfPresent(String.self, forKey: .displayName)
         self.themeUuid = try container.decodeIfPresent(String.self, forKey: .themeUuid)
         self.contentTierUuid = try container.decodeIfPresent(String.self, forKey: .contentTierUuid)
         self.displayIcon = try container.decodeIfPresent(String.self, forKey: .displayIcon)
@@ -87,14 +87,21 @@ class Skin: Identifiable, Codable, ObservableObject{
 }
 
 @Model
-class Chromas: Codable, Identifiable{
+final class Chromas: Codable, Identifiable{
     
-    var id : UUID
-    var displayName : String?
-    var displayIcon : String?
-    var fullRender : String?
-    var streamedVideo : String?
-    var swatch : String?
+    @Attribute(.unique)
+    var id: UUID
+    var displayName: String?
+    var displayIcon: String?
+    var fullRender: String?
+    var streamedVideo: String?
+    var swatch: String?
+    
+    @Relationship(deleteRule: .cascade, inverse: \Skin.chromas)
+    var skin: Skin?
+    
+    var chromaImage: Data?
+    var swatchImage: Data?
     
     enum CodingKeys:String, CodingKey{
         case id = "uuid"
@@ -144,14 +151,20 @@ class Chromas: Codable, Identifiable{
 }
 
 @Model
-class Levels: Codable, Identifiable{
+final class Levels: Codable, Identifiable{
     
-    var id:UUID
-    var displayName:String?
-    var levelItem:String?
-    var displayIcon:String?
-    var streamedVideo:String?
+    @Attribute(.unique)
+    var id: UUID
+    var displayName: String?
+    var levelItem: String?
+    var displayIcon: String?
+    var streamedVideo: String?
     
+    @Relationship(deleteRule: .cascade, inverse: \Skin.levels)
+    var skin: Skin?
+    
+    var levelImage: Data?
+
     enum CodingKeys:String, CodingKey{
         case id = "uuid"
         

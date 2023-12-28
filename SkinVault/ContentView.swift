@@ -12,20 +12,43 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @EnvironmentObject private var skinModel: SkinModel
     @Query(sort: \Skin.displayName, order: .forward) var skins: [Skin]
-
     var body: some View {
         VStack {
             Text("List")
     
             Button {
-                modelContext.deletedModelsArray
+                skinModel.getRemoteData()
             } label: {
-                Text("Delete ")
+                Text("Download")
+            }
+            
+            Button {
+                Task {
+                    _ = try modelContext.delete(model: Skin.self)
+                }
+            } label: {
+                Text("Delete")
             }
             
             List {
                 ForEach(skins) { skin in
-                    Text(skin.displayName)
+                    
+                    /*
+                    Image(uiImage: UIImage(data: (skin.chromas?.first?.chromaImage) ?? Data()) ?? UIImage())
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 20)
+                   
+                    Image(uiImage: UIImage(data: (skin.chromas?.first?.swatchImage) ?? Data()) ?? UIImage())
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 20)
+
+                    */
+                    
+                    if skin != nil {
+                        Text(skin.displayName!)
+                    }
                 }
                 //.onDelete(perform: deleteItems)
                 
@@ -36,7 +59,7 @@ struct ContentView: View {
         }
         .onAppear {
             skinModel.modelContext = self.modelContext
-            skinModel.getRemoteDataLogic()
+            skinModel.getRemoteData()
         }
         
         

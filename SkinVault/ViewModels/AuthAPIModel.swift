@@ -71,10 +71,8 @@ class AuthAPIModel: ObservableObject {
     
     let keychain = Keychain()
     let defaults = UserDefaults.standard
+
     
-    
-    
-    /*
     init() {
         
         // TODO: Implement CoreData, but for now lmao this works
@@ -148,7 +146,7 @@ class AuthAPIModel: ObservableObject {
         }
         
     }
-    */
+    
     
     // MARK: Login
     @MainActor

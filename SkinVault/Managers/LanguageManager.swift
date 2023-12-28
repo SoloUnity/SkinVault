@@ -48,12 +48,12 @@ class LanguageManager {
         
         switch self.language[0] {
         case "fr", "fr-CA", "de", "vi", "es", "pt-PT", "pt-BR", "pl":
-            let list = displayName.split(separator: " ")
+            let list = displayName!.split(separator: " ")
             baseName = String(list[0])
         case "ja":
-            baseName = String(Array(displayName)[6...])
+            baseName = String(Array(displayName!)[6...])
         default:
-            let list = displayName.split(separator: " ")
+            let list = displayName!.split(separator: " ")
             baseName = String(list[1])
         }
         

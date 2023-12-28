@@ -20,9 +20,19 @@ class SkinModel: ObservableObject{
     @AppStorage("networkType") var networkType = "both"
     @AppStorage("currentNetworkType") var currentNetworkType = ""
     
+    enum downloadType {
+        case level
+        case chroma
+        case swatch
+    }
     
     let defaults = UserDefaults.standard
     let network = NetworkModel()
+    
+    
+    init() {
+        getRemoteData()
+    }
     
     func getRemoteDataLogic() {
         if networkType == "wifi" && currentNetworkType == "wifi" {
@@ -52,7 +62,7 @@ class SkinModel: ObservableObject{
             }
             
             var urlString = Constants.URL.valAPISkins
-
+            
             urlString = urlString + "?language=" + LanguageManager().getAPIChosenLanguageString()
             
             let url = URL(string: urlString)
@@ -80,67 +90,56 @@ class SkinModel: ObservableObject{
                 
                 let skinDataResponse = try! jsonDecoder.decode(Skins.self, from: data!)
                 
-                
                 let skinData = skinDataResponse.data
+                
+                
                 for skin in skinData {
-                    var fetchDescriptor = FetchDescriptor<Skin>()
-                    fetchDescriptor.predicate = #Predicate { item in
-                        skin.persistentModelID == item.id
+                    
+                    DispatchQueue.main.async {
+                        self.modelContext?.insert(skin)
+                        //self.getImageChromaData(skin: skin, session: session)
                     }
                     
-                    do {
-                        let existingSkin = try self.modelContext?.fetch(fetchDescriptor)
-                        
-                        if (existingSkin?.first == nil) {
-                            self.modelContext?.insert(skin)
-                        }
-                    } catch {
-                        print(error)
-                    }
                 }
-
-
-                
-                
-                var totalImages : Double = 0
+                //var totalImages : Double = 0
                 
                 //totalImages += self.getRemoteDataDownloadCount(skinDataResponse: skinDataResponse)
                 /*
-                DispatchQueue.main.async{
-                    self.progressDenominator = totalImages
-                    
-                    if self.defaults.bool(forKey: "authorizeDownload") {
-                        
-                        let session: URLSession = {
-                            let configuration = URLSessionConfiguration.ephemeral
-                            configuration.timeoutIntervalForRequest = 240 // seconds
-                            configuration.timeoutIntervalForResource = 240 // seconds
-                            return URLSession(configuration: configuration)
-                        }()
-                        
-                        DispatchQueue.global(qos: .default).async {
-                            
-                            for skin in skinDataResponse.data {
-                                
-                                self.getImageLevelData(skin: skin, session: session)
-                                self.getImageChromaData(skin: skin, session: session)
-                                
-                                if skin.displayName.count > 2 && String(Array(skin.displayName)[0..<2]).contains("\n"){
-                                    skin.displayName = String(Array(skin.displayName)[2...])
-                                }
-                                   
-                            }
-                            
-                            
-                         }
-                        
-                    }
-                    
-                    self.standardSkins = skinDataResponse.data.filter({$0.themeUuid!.contains("5a629df4-4765-0214-bd40-fbb96542941f")})
-                    
-                    self.data = skinDataResponse.data.sorted(by: {$0.displayName.lowercased() < $1.displayName.lowercased()}).filter({!$0.themeUuid!.contains("5a629df4-4765-0214-bd40-fbb96542941f")}).filter({!$0.themeUuid!.contains("0d7a5bfb-4850-098e-1821-d989bbfd58a8")}) //Sorts alphabetically and filters out Standard skin
-                }
-                */
+                 DispatchQueue.main.async{
+                 self.progressDenominator = totalImages
+                 
+                 if self.defaults.bool(forKey: "authorizeDownload") {
+                 
+                 let session: URLSession = {
+                 let configuration = URLSessionConfiguration.ephemeral
+                 configuration.timeoutIntervalForRequest = 240 // seconds
+                 configuration.timeoutIntervalForResource = 240 // seconds
+                 return URLSession(configuration: configuration)
+                 }()
+                 
+                 DispatchQueue.global(qos: .default).async {
+                 
+                 for skin in skinDataResponse.data {
+                 
+                 self.getImageLevelData(skin: skin, session: session)
+                 self.getImageChromaData(skin: skin, session: session)
+                 
+                 if skin.displayName.count > 2 && String(Array(skin.displayName)[0..<2]).contains("\n"){
+                 skin.displayName = String(Array(skin.displayName)[2...])
+                 }
+                 
+                 }
+                 
+                 
+                 }
+                 
+                 }
+                 
+                 self.standardSkins = skinDataResponse.data.filter({$0.themeUuid!.contains("5a629df4-4765-0214-bd40-fbb96542941f")})
+                 
+                 self.data = skinDataResponse.data.sorted(by: {$0.displayName.lowercased() < $1.displayName.lowercased()}).filter({!$0.themeUuid!.contains("5a629df4-4765-0214-bd40-fbb96542941f")}).filter({!$0.themeUuid!.contains("0d7a5bfb-4850-098e-1821-d989bbfd58a8")}) //Sorts alphabetically and filters out Standard skin
+                 }
+                 */
                 
                 
             }
@@ -150,170 +149,255 @@ class SkinModel: ObservableObject{
         
     }
     
-    /*
-    func getRemoteDataDownloadCount(skinDataResponse: Skins) -> Double {
+    func deleteData() async throws {
         
-        var totalImages: Double = 0
+        try modelContext?.delete(model: Skin.self)
         
-        for skin in skinDataResponse.data {
-            
-            if let _ = self.defaults.data(forKey: skin.levels!.first!.id.description) {
-                
-            } else {
-                totalImages += 1
-            }
-                            
-            for chroma in skin.chromas! {
-                
-                if let _ = self.defaults.data(forKey: chroma.id.description) {
-                    
-                }
-                else {
-                    totalImages += 1
-                }
-                
-                if let _ = self.defaults.data(forKey: chroma.id.description + "swatch") {
-                    
-                }
-                else if chroma.swatch != nil {
-                    
-                    totalImages += 1
-                    
-                }
-            }
-        }
-        
-        return totalImages
-    }
-    */
-    func deleteData() async {
-        if let skinData = defaults.data(forKey: "skinDataResponse") {
-            
-            let skinDataResponse = try! JSONDecoder().decode(Skins.self, from: skinData)
-            
-            for skin in skinDataResponse.data {
-                
-                if let _ = self.defaults.data(forKey: skin.levels!.first!.id.description) {
-                    self.defaults.removeObject(forKey: skin.levels!.first!.id.description)
-                }
-                
-                
-                
-                for chroma in skin.chromas! {
-                    
-                    if let _ = self.defaults.data(forKey: chroma.id.description) {
-                        self.defaults.removeObject(forKey: chroma.id.description)
-                    }
-
-                    if let _ = self.defaults.data(forKey: chroma.id.description + "swatch") {
-                        self.defaults.removeObject(forKey: chroma.id.description + "swatch")
-                    }
-                }
-            }
-        }
-        
-        
-
     }
     
-    // Convert image url to data object
-    func getImageLevelData(skin: Skin, session: URLSession) {
-        
-        if let _ = defaults.data(forKey: skin.levels!.first!.id.description) {
-            
-        } else {
-            if let url = URL(string: "\(Constants.URL.valStore)weaponskinlevels/\(skin.levels!.first!.id.description.lowercased()).png") {
-                
-                dataHelper(url: url, key: skin.levels!.first!.id.description, session: session)
-                
-            }
-            
-        }
-    }
     
     func getImageChromaData(skin: Skin, session: URLSession) {
         
-        for chroma in skin.chromas! {
+        do {
             
-            if let _ = defaults.data(forKey: chroma.id.description) {
+            let session: URLSession = {
+                let configuration = URLSessionConfiguration.ephemeral
+                configuration.timeoutIntervalForRequest = 240 // seconds
+                configuration.timeoutIntervalForResource = 240 // seconds
+                return URLSession(configuration: configuration)
+            }()
+            
+            for chroma in skin.chromas! {
                 
-            }
-            else {
                 if let url = URL(string: "\(Constants.URL.valAPIMedia)weaponskinchromas/\(chroma.id.description.lowercased())/fullrender.png") {
-                    
-                    dataHelper(url: url, key: chroma.id.description, session: session)
+                    dataHelper(skin:skin, url: url, key: chroma.id.description, session: session, downloadType: .chroma, chroma: chroma)
                 }
-            }
-            
-            if let _ = defaults.data(forKey: chroma.id.description + "swatch") {
-                
-            }
-            else {
                 
                 guard let swatchURL = chroma.swatch else {
                     return
                 }
                 
                 if let url = URL(string: swatchURL) {
-                    
-                    dataHelper(url: url, key: chroma.id.description + "swatch", session: session)
+                    dataHelper(skin:skin, url: url, key: chroma.id.description + "swatch", session: session, downloadType: .swatch, chroma: chroma)
                 }
                 
+                /*
+                 var chromasFetchDescriptor = FetchDescriptor<Chromas>()
+                 chromasFetchDescriptor.predicate = #Predicate { item in
+                 chroma.id == item.id
+                 }
+                 
+                 let existingChroma = try self.modelContext?.fetch(chromasFetchDescriptor)
+                 
+                 if existingChroma?.first == nil, let url = URL(string: "\(Constants.URL.valAPIMedia)weaponskinchromas/\(chroma.id.description.lowercased())/fullrender.png") {
+                 dataHelper(skin:skin, url: url, key: chroma.id.description, session: session, downloadType: .chroma, chroma: chroma)
+                 }
+                 
+                 guard let swatchURL = chroma.swatch else {
+                 return
+                 }
+                 
+                 if let url = URL(string: swatchURL) {
+                 dataHelper(skin:skin, url: url, key: chroma.id.description + "swatch", session: session, downloadType: .swatch, chroma: chroma)
+                 }
+                 */
             }
-            
-            
+        } catch {
+            print("getImageChromaData Error: \(error)")
         }
+        
     }
     
-    
-    func dataHelper (url : URL, key : String, session: URLSession) {        
+    func dataHelper (skin: Skin, url: URL, key : String, session: URLSession, downloadType: downloadType, chroma: Chromas? = nil) {
         
         let dataTask = session.dataTask(with: url) { (data, response, error) in
             
-            guard
-                let httpResponse = response as? HTTPURLResponse,
-                httpResponse.statusCode == 200
+            
+            guard let httpResponse = response as? HTTPURLResponse,
+                  httpResponse.statusCode == 200
             else{
-                DispatchQueue.main.async{
+                DispatchQueue.main.async {
+                    self.progressNumerator += 1
+                }
+                return
+            }
+            
+            // TODO: Handle timeouts
+            //if (err as? URLError)?.code == .timedOut {
+            // Handle session timeout
+            //}
+            
+            if error == nil && data != nil {
+                /*
+                 let encoded = try! PropertyListEncoder().encode(data)
+                 UserDefaults.standard.set(encoded, forKey: key)
+                 */
+                
+                DispatchQueue.main.async {
+                    switch downloadType {
+                    case .chroma:
+                        chroma?.chromaImage = data
+                    case .level:
+                        skin.levels?.first?.levelImage = data
+                    case .swatch:
+                        chroma?.swatchImage = data
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.progressNumerator += 1
+                    }
+                }
+                
+                
+            }
+            else {
+                DispatchQueue.main.async {
                     self.progressNumerator += 1
                 }
                 
                 return
-                
             }
             
-            if error == nil {
-                
-                DispatchQueue.main.async {
-                    // Set the image data
-                    if data != nil {
-                        let encoded = try! PropertyListEncoder().encode(data)
-                        UserDefaults.standard.set(encoded, forKey: key)
-                        
-                        DispatchQueue.main.async{
-                            self.progressNumerator += 1
-                        }
-                    }
-                    else {
-                        return
-                    }
-                }
-            }
-            else {
-                return
-            }
+            
+            
         }
         
         let _ : NSKeyValueObservation = dataTask.progress.observe(\.fractionCompleted) { observationProgress, _ in
-            
-            DispatchQueue.main.async{
-                self.progressNumerator += observationProgress.fractionCompleted
-            }
-            
+            self.progressNumerator += observationProgress.fractionCompleted
         }
         
         dataTask.resume()
     }
+    /*
+     func deleteData() async {
+     if let skinData = defaults.data(forKey: "skinDataResponse") {
+     
+     let skinDataResponse = try! JSONDecoder().decode(Skins.self, from: skinData)
+     
+     for skin in skinDataResponse.data {
+     
+     if let _ = self.defaults.data(forKey: skin.levels!.first!.id.description) {
+     self.defaults.removeObject(forKey: skin.levels!.first!.id.description)
+     }
+     
+     
+     
+     for chroma in skin.chromas! {
+     
+     if let _ = self.defaults.data(forKey: chroma.id.description) {
+     self.defaults.removeObject(forKey: chroma.id.description)
+     }
+     
+     if let _ = self.defaults.data(forKey: chroma.id.description + "swatch") {
+     self.defaults.removeObject(forKey: chroma.id.description + "swatch")
+     }
+     }
+     }
+     }
+     
+     
+     
+     }
+     
+     // Convert image url to data object
+     func getImageLevelData(skin: Skin, session: URLSession) {
+     
+     if let _ = defaults.data(forKey: skin.levels!.first!.id.description) {
+     
+     } else {
+     if let url = URL(string: "\(Constants.URL.valStore)weaponskinlevels/\(skin.levels!.first!.id.description.lowercased()).png") {
+     
+     dataHelper(url: url, key: skin.levels!.first!.id.description, session: session)
+     
+     }
+     
+     }
+     }
+     
+     func getImageChromaData(skin: Skin, session: URLSession) {
+     
+     for chroma in skin.chromas! {
+     
+     if let _ = defaults.data(forKey: chroma.id.description) {
+     
+     }
+     else {
+     if let url = URL(string: "\(Constants.URL.valAPIMedia)weaponskinchromas/\(chroma.id.description.lowercased())/fullrender.png") {
+     
+     dataHelper(url: url, key: chroma.id.description, session: session)
+     }
+     }
+     
+     if let _ = defaults.data(forKey: chroma.id.description + "swatch") {
+     
+     }
+     else {
+     
+     guard let swatchURL = chroma.swatch else {
+     return
+     }
+     
+     if let url = URL(string: swatchURL) {
+     
+     dataHelper(url: url, key: chroma.id.description + "swatch", session: session)
+     }
+     
+     }
+     
+     
+     }
+     }
+     
+     
+     func dataHelper (url : URL, key : String, session: URLSession) {
+     
+     let dataTask = session.dataTask(with: url) { (data, response, error) in
+     
+     guard
+     let httpResponse = response as? HTTPURLResponse,
+     httpResponse.statusCode == 200
+     else{
+     DispatchQueue.main.async{
+     self.progressNumerator += 1
+     }
+     
+     return
+     
+     }
+     
+     if error == nil {
+     
+     DispatchQueue.main.async {
+     // Set the image data
+     if data != nil {
+     let encoded = try! PropertyListEncoder().encode(data)
+     UserDefaults.standard.set(encoded, forKey: key)
+     
+     DispatchQueue.main.async{
+     self.progressNumerator += 1
+     }
+     }
+     else {
+     return
+     }
+     }
+     }
+     else {
+     return
+     }
+     }
+     
+     let _ : NSKeyValueObservation = dataTask.progress.observe(\.fractionCompleted) { observationProgress, _ in
+     
+     DispatchQueue.main.async{
+     self.progressNumerator += observationProgress.fractionCompleted
+     }
+     
+     }
+     
+     dataTask.resume()
+     }
+     */
 }
 
 

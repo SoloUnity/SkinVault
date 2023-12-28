@@ -19,6 +19,8 @@ struct SplashScreenView: View {
     
     var body: some View {
         
+        // TODO: Modify the splashscreen based on darkmode
+        
         if isActive {
             
             ContentView()
@@ -55,8 +57,6 @@ struct SplashScreenView: View {
                         self.opacity = 1.0
                     }
                 }
-                
-                
             }
             .padding(120)
             .background(auto ? (colourScheme == .light ? .white : .black) : (toggleDark ? .black : .white))
@@ -73,6 +73,7 @@ struct SplashScreenView: View {
             
         }
     }
+        
 }
 
 struct SplashScreenView_Previews: PreviewProvider {
